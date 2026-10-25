@@ -356,7 +356,7 @@ p{margin:0}
 .tarea dd{margin:0;font-family:var(--mono);font-size:14px;font-weight:500}
 
 /* ── 표 ── */
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;-webkit-overflow-scrolling:touch}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
 caption{text-align:left;padding:15px 18px;font-weight:700;font-size:15px;border-bottom:1px solid var(--line)}
 th,td{padding:10px 13px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
@@ -475,6 +475,10 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
 .pw-b2{background:var(--gold);color:#fff}
 .pw-foot{display:flex;align-items:center;gap:8px;padding:11px 26px;background:rgba(0,0,0,.25);font-size:12.5px;color:rgba(245,238,230,.6)}
 .pw-foot input{accent-color:var(--gold)}
+
+/* adguard.js 가 주입하는 개인정보 안내 — 기본 하단 패딩 96px 은 과하다 */
+#adguard-privacy-link{padding:10px 16px 14px!important;font-size:11px!important}
+@media (max-width:1023px){#adguard-privacy-link{padding:10px 16px 76px!important}}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
