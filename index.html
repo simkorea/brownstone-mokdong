@@ -5,6 +5,9 @@
 <!-- 토스애즈 픽셀 (async·defer 금지) -->
 <script type="text/javascript" charset="UTF-8" src="https://static.toss.im/lex/v1.js"></script>
 <!-- OpenAI ChatGPT Ads 웹 픽셀 — Ads Manager 에서 데이터 소스 만든 뒤 OAI_PIXEL 에 ID 를 넣으면 작동 -->
+<!-- Meta(페이스북·인스타) 픽셀 — 이벤트 관리자에서 데이터 세트(픽셀)를 만든 뒤 META_PIXEL_ID 에 ID 를 넣으면 작동. 비어 있으면 아무것도 로드하지 않는다 -->
+<script>window.META_PIXEL_ID = '1894742568449169';</script>
+<script>if(window.META_PIXEL_ID){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',window.META_PIXEL_ID);fbq('track','PageView');}</script>
 <script>window.OAI_PIXEL = '';</script>
 <script>if(window.OAI_PIXEL){!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:window.OAI_PIXEL,debug:false});}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1199,6 +1202,10 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
                  : 'LEAD-' + Date.now() + '-' + Math.random().toString(36).slice(2,10);
         if (typeof TossPixel === 'function'){
           TossPixel('2382883081870412525').lead({ event_id: evId, lead_type:'Consultation', custom_param1:'브라운스톤목동' });
+        }
+        /* Meta 전환(Lead): 픽셀 ID가 들어 있을 때만. 같은 evId 로 중복 집계 방지 */
+        if (typeof window.fbq === 'function'){
+          window.fbq('track', 'Lead', { content_name:'브라운스톤목동', lead_type:'Consultation' }, { eventID: evId });
         }
       }catch(_px){}
       /* 네이버 전환(lead): 공통키가 들어 있을 때만 */
