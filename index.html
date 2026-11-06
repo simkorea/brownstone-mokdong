@@ -197,6 +197,7 @@ p{margin:0}
   border-bottom:1px solid rgba(245,238,230,.14);display:flex;align-items:center}
 .nav-in{display:flex;align-items:center;gap:16px;width:min(100% - 40px,1340px);margin-inline:auto}
 .brand{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex:0 0 auto}
+.brand-logo{width:44px;height:44px;border-radius:8px;align-self:center;display:block}
 .brand b{font-family:var(--display);font-size:20px;font-weight:600;color:var(--cream);letter-spacing:.03em}
 .brand span{font-family:var(--mono);font-size:9.5px;color:var(--gold-lit);letter-spacing:.24em}
 .nav-menu{display:flex;gap:2px;margin-left:auto}
@@ -497,7 +498,7 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
 
 <header class="nav">
   <div class="nav-in">
-    <a class="brand" href="#brand"><b>Brown Stone</b><span>MOKDONG</span></a>
+    <a class="brand" href="#brand"><img class="brand-logo" src="images/bs/logo.png" alt="Brown Stone 목동 로고" width="44" height="44"><b>Brown Stone</b><span>MOKDONG</span></a>
     <button class="burger" id="burger" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-menu" id="navMenu">
       <a href="#brand" class="on">단지소개</a>
