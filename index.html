@@ -336,6 +336,53 @@ p{margin:0}
 .prem-row img{width:100%;border-radius:11px}
 
 /* ── 타입 탭 ── */
+/* ── 현장 사진 ── */
+.shots{margin-top:24px;grid-column:1/-1}
+.shots-h{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.shots-h b{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;color:var(--gold)}
+.shots-h span{font-size:12.5px;color:var(--muted);word-break:keep-all}
+.shots-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:10px}
+.shot{
+  position:relative;display:block;width:100%;aspect-ratio:4/3;margin:0;padding:0;overflow:hidden;
+  border:1px solid var(--line);border-radius:10px;background:#fff;cursor:zoom-in;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.shot:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 7px 18px rgba(26,23,20,.14)}
+.shot:active{transform:none}
+.shot img{width:100%;height:100%;object-fit:cover}
+.shot-c{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 9px 7px;text-align:left;
+  font-family:var(--sans);font-size:11.5px;font-weight:600;color:#fff;letter-spacing:-.01em;
+  background:linear-gradient(transparent,rgba(16,11,6,.84));
+}
+.sec.navy .shots-h b,.sec.ink .shots-h b{color:var(--gold-lit)}
+.sec.navy .shots-h span,.sec.ink .shots-h span{color:rgba(245,238,230,.74)}
+
+/* ── 사진 라이트박스 ── */
+.lb{position:fixed;inset:0;z-index:300;background:rgba(16,11,6,.94);display:grid;place-items:center;padding:14px}
+.lb[hidden]{display:none}
+.lb-fig{margin:0;max-width:100%;display:flex;flex-direction:column;align-items:center;gap:13px}
+.lb-fig img{max-width:min(100%,1400px);max-height:calc(100dvh - 150px);width:auto;border-radius:8px;background:#201a14}
+.lb-cap{font-size:13.5px;color:rgba(245,238,230,.84);text-align:center;letter-spacing:-.01em}
+.lb-cap b{color:var(--gold-lit);font-weight:600;margin-right:8px}
+.lb-btn{
+  position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;display:grid;place-items:center;
+  background:rgba(245,238,230,.12);border:1px solid rgba(245,238,230,.32);border-radius:50%;
+  color:var(--cream);font-size:19px;line-height:1;cursor:pointer;transition:background-color .2s;
+}
+.lb-btn:hover{background:rgba(245,238,230,.26)}
+.lb-prev{left:14px}.lb-next{right:14px}
+.lb-x{
+  position:absolute;top:14px;right:14px;width:42px;height:42px;display:grid;place-items:center;
+  background:rgba(245,238,230,.12);border:1px solid rgba(245,238,230,.32);border-radius:50%;
+  color:var(--cream);font-size:16px;line-height:1;cursor:pointer;transition:background-color .2s;
+}
+.lb-x:hover{background:rgba(245,238,230,.26)}
+@media (max-width:600px){
+  .lb-btn{width:40px;height:40px}.lb-prev{left:6px}.lb-next{right:6px}
+  .shots-g{grid-template-columns:repeat(auto-fill,minmax(min(100%,132px),1fr));gap:8px}
+}
+
 .tabs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:26px}
 .tab{font-family:var(--mono);font-size:14px;font-weight:600;padding:10px 16px;border-radius:999px;
   border:1px solid var(--line);background:#fff;color:var(--text);cursor:pointer;
@@ -693,6 +740,37 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
       <p class="tx-note reveal">※ 위 사진은 모두 이미지컷으로 실제와 다를 수 있습니다.</p>
     </div>
   </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <p class="sec-eb reveal">SITE REPORT</p>
+      <h2 class="reveal d1">공사 현장 그대로</h2>
+      <p class="sec-lead reveal d2">모델하우스가 아니라 공사 중인 현장을 직접 찍은 사진입니다. 지하주차장과 엘리베이터, 계단실은 마감이 끝난 상태입니다.</p>
+      <div class="shots reveal d3" style="margin-top:0">
+        <div class="shots-g">
+          <button type="button" class="shot" data-big="images/bs/site/cm-1-big.webp" data-cap="공사 중인 단지 외관" aria-label="공사 중인 단지 외관 크게 보기">
+            <img src="images/bs/site/cm-1.webp" alt="공사 중인 단지 외관" loading="lazy" width="480" height="852">
+            <span class="shot-c">공사 중인 단지 외관</span></button>
+          <button type="button" class="shot" data-big="images/bs/site/cm-2-big.webp" data-cap="지하주차장" aria-label="지하주차장 크게 보기">
+            <img src="images/bs/site/cm-2.webp" alt="지하주차장" loading="lazy" width="479" height="270">
+            <span class="shot-c">지하주차장</span></button>
+          <button type="button" class="shot" data-big="images/bs/site/cm-3-big.webp" data-cap="지하주차장 B1" aria-label="지하주차장 B1 크게 보기">
+            <img src="images/bs/site/cm-3.webp" alt="지하주차장 B1" loading="lazy" width="479" height="270">
+            <span class="shot-c">지하주차장 B1</span></button>
+          <button type="button" class="shot" data-big="images/bs/site/cm-4-big.webp" data-cap="엘리베이터 홀" aria-label="엘리베이터 홀 크게 보기">
+            <img src="images/bs/site/cm-4.webp" alt="엘리베이터 홀" loading="lazy" width="479" height="270">
+            <span class="shot-c">엘리베이터 홀</span></button>
+          <button type="button" class="shot" data-big="images/bs/site/cm-5-big.webp" data-cap="엘리베이터" aria-label="엘리베이터 크게 보기">
+            <img src="images/bs/site/cm-5.webp" alt="엘리베이터" loading="lazy" width="480" height="852">
+            <span class="shot-c">엘리베이터</span></button>
+          <button type="button" class="shot" data-big="images/bs/site/cm-6-big.webp" data-cap="계단실" aria-label="계단실 크게 보기">
+            <img src="images/bs/site/cm-6.webp" alt="계단실" loading="lazy" width="480" height="852">
+            <span class="shot-c">계단실</span></button>
+        </div>
+      </div>
+      <p class="tbl-note reveal">※ 2026년 11월 공사 현장을 촬영한 사진입니다. 공사가 진행 중이므로 준공 후 실제 모습과 다를 수 있습니다.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ══ 4. 타입·분양가 ══ -->
@@ -994,6 +1072,17 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
   </div>
 </div>
 
+<!-- ══ 현장 사진 라이트박스 ══ -->
+<div class="lb" id="shotLb" role="dialog" aria-modal="true" aria-label="현장 사진 크게 보기" hidden>
+  <button type="button" class="lb-x" id="shotLbX" aria-label="닫기">&#10005;</button>
+  <button type="button" class="lb-btn lb-prev" id="shotLbPrev" aria-label="이전 사진">&#10094;</button>
+  <figure class="lb-fig">
+    <img id="shotLbImg" alt="">
+    <figcaption class="lb-cap" id="shotLbCap"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" id="shotLbNext" aria-label="다음 사진">&#10095;</button>
+</div>
+
 <script>
 (function(){
   'use strict';
@@ -1002,15 +1091,36 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ── 타입 데이터 (공식 타입안내 기준) ── */
+  /* ── 현장 사진 ── */
+  var SHOT_DIM = {'cm-1':[480,852],'cm-2':[479,270],'cm-3':[479,270],'cm-4':[479,270],'cm-5':[480,852],'cm-6':[480,852],'u38-1':[479,270],'u38-2':[479,270],'u38-3':[480,852],'u38-4':[480,852],'u38-5':[479,270],'u38-6':[479,270],'u44-1':[479,270],'u44-2':[479,270],'u44-3':[479,270],'u44-4':[479,270],'u44-5':[479,270],'u49-1':[479,270],'u49-2':[479,270],'u49-3':[480,852],'u49-4':[480,852],'u49-5':[479,270],'u49-6':[479,270],'u81-1':[479,270],'u81-2':[479,270],'u81-3':[480,852],'u81-4':[479,270],'u81-5':[480,852],'u81-6':[479,270],'u84B-1':[479,270],'u84B-2':[479,270],'u84B-3':[480,852],'u84B-4':[480,852],'u84B-5':[480,852],'u84B-6':[479,270]};
+  function shotCell(n, cap){
+    var d = SHOT_DIM[n];
+    return '<button type="button" class="shot" data-big="images/bs/site/'+n+'-big.webp" '+
+             'data-cap="'+cap+'" aria-label="'+cap+' 크게 보기">'+
+             '<img src="images/bs/site/'+n+'.webp" alt="'+cap+'" loading="lazy" '+
+             'width="'+d[0]+'" height="'+d[1]+'">'+
+             '<span class="shot-c">'+cap+'</span></button>';
+  }
+  function shotsHtml(t){
+    return '<div class="shots">'+
+      '<div class="shots-h"><b>REAL PHOTO</b>'+
+        '<span>실제 '+t.k+'㎡ 세대 — '+FLOOR[t.k]+'에서 촬영</span></div>'+
+      '<div class="shots-g">'+
+        t.shots.map(function(x){ return shotCell(x[0], x[1]); }).join('')+
+      '</div>'+
+      '<p class="tbl-note">※ 2026년 11월 촬영한 실제 세대 현장 사진입니다. 공사 진행 중 촬영으로 마감·시공 상태는 준공 시점과 다를 수 있으며, 조망은 동·층·향·세대 위치에 따라 달라집니다.</p></div>';
+  }
+  var FLOOR = {'38':'9층','44':'6층','49':'10층','81':'7층','84B':'2층'};
+
   var TYPES = [
-    { k:'38',  f:'38',  ex:'38.0151',  com:'11.8875', sub:'49.9026',  etc:'26.9140', con:'76.8166',  all:2,  gen:2 },
+    { shots:[['u38-1','거실'],['u38-2','주방'],['u38-3','욕실'],['u38-4','현관 붙박이장'],['u38-5','9층에서 본 조망'],['u38-6','9층에서 본 조망']], k:'38',  f:'38',  ex:'38.0151',  com:'11.8875', sub:'49.9026',  etc:'26.9140', con:'76.8166',  all:2,  gen:2 },
     { k:'39',  f:'39',  ex:'39.4007',  com:'12.4163', sub:'51.8170',  etc:'27.8950', con:'79.7120',  all:10, gen:3 },
-    { k:'44',  f:'44',  ex:'44.1911',  com:'13.4641', sub:'57.6552',  etc:'31.2865', con:'88.9417',  all:7,  gen:6 },
-    { k:'49',  f:'49B', ex:'49.4829',  com:'15.2305', sub:'64.7134',  etc:'35.0330', con:'99.7464',  all:9,  gen:1 },
+    { shots:[['u44-1','거실'],['u44-2','거실에서 발코니 쪽'],['u44-3','복도 붙박이장'],['u44-4','침실'],['u44-5','6층에서 본 조망']], k:'44',  f:'44',  ex:'44.1911',  com:'13.4641', sub:'57.6552',  etc:'31.2865', con:'88.9417',  all:7,  gen:6 },
+    { shots:[['u49-1','거실'],['u49-2','주방'],['u49-3','욕실'],['u49-4','붙박이장'],['u49-5','침실'],['u49-6','10층에서 본 조망']], k:'49',  f:'49B', ex:'49.4829',  com:'15.2305', sub:'64.7134',  etc:'35.0330', con:'99.7464',  all:9,  gen:1 },
     { k:'59',  f:'59',  ex:'59.1925',  com:'18.7749', sub:'77.9674',  etc:'41.9072', con:'119.8746', all:8,  gen:1 },
     { k:'70',  f:'70',  ex:'70.7954',  com:'22.8966', sub:'93.6920',  etc:'50.1219', con:'143.8139', all:8,  gen:2 },
-    { k:'81',  f:'81',  ex:'81.0566',  com:'24.1009', sub:'105.1575', etc:'57.3866', con:'162.5441', all:9,  gen:8 },
-    { k:'84B', f:'84B', ex:'84.9830',  com:'24.9613', sub:'109.9443', etc:'60.1665', con:'170.110',  all:17, gen:6 }
+    { shots:[['u81-1','거실과 주방'],['u81-2','ㄷ자형 주방'],['u81-3','욕실'],['u81-4','침실'],['u81-5','붙박이장'],['u81-6','7층에서 본 조망']], k:'81',  f:'81',  ex:'81.0566',  com:'24.1009', sub:'105.1575', etc:'57.3866', con:'162.5441', all:9,  gen:8 },
+    { shots:[['u84B-1','거실과 주방'],['u84B-2','아일랜드 주방'],['u84B-3','붙박이장'],['u84B-4','욕실'],['u84B-5','팬트리'],['u84B-6','침실']], k:'84B', f:'84B', ex:'84.9830',  com:'24.9613', sub:'109.9443', etc:'60.1665', con:'170.110',  all:17, gen:6 }
   ];
   var tabsEl = $('#typeTabs'), panesEl = $('#typePanes');
   TYPES.forEach(function(t, i){
@@ -1039,6 +1149,7 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
             '<div class="r"><dt>기타공용면적</dt><dd>'+t.etc+'㎡</dd></div>'+
             '<div class="r"><dt>계약면적</dt><dd>'+t.con+'㎡</dd></div>'+
           '</dl></div>'+
+        (t.shots ? shotsHtml(t) : '')+
       '</div>';
     panesEl.appendChild(p);
   });
@@ -1250,6 +1361,49 @@ input::placeholder,textarea::placeholder{color:#AFA69C}
   $('#pwGo').addEventListener('click', closePw);
   pw.addEventListener('click', function(e){ if (e.target === pw) closePw(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !pw.hidden) closePw(); });
+  /* ── 사진 라이트박스 ── */
+  var lb = $('#shotLb'), lbImg = $('#shotLbImg'), lbCap = $('#shotLbCap'),
+      lbList = [], lbAt = 0, lbLast = null;
+  function lbShow(i){
+    lbAt = (i + lbList.length) % lbList.length;
+    var b = lbList[lbAt];
+    lbImg.src = b.dataset.big;
+    lbImg.alt = b.dataset.cap;
+    lbCap.innerHTML = '<b>' + (lbAt + 1) + ' / ' + lbList.length + '</b>' + b.dataset.cap;
+  }
+  function lbOpen(b){
+    /* 같은 묶음(.shots-g) 안에서만 넘긴다 */
+    lbList = $$('.shot', b.closest('.shots-g'));
+    lbLast = document.activeElement;
+    lbShow(lbList.indexOf(b));
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    $('#shotLbX').focus();
+  }
+  function lbClose(){
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (lbLast && lbLast.focus) lbLast.focus();
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('.shot') : null;
+    if (b) lbOpen(b);
+  });
+  $('#shotLbX').addEventListener('click', lbClose);
+  $('#shotLbPrev').addEventListener('click', function(){ lbShow(lbAt - 1); });
+  $('#shotLbNext').addEventListener('click', function(){ lbShow(lbAt + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) lbClose(); });
+  lb.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){ lbClose(); return; }
+    if (e.key === 'ArrowLeft'){ lbShow(lbAt - 1); return; }
+    if (e.key === 'ArrowRight'){ lbShow(lbAt + 1); return; }
+    if (e.key !== 'Tab') return;
+    var f = $$('button', lb), first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  });
+
 })();
 </script>
 
